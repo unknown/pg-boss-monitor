@@ -1,0 +1,22 @@
+# TURBO
+.turbo
+
+# DEPENDENCIES
+node_modules/
+/.pnp
+.pnp.js
+yarn.lock
+
+# BUILD
+dist/
+
+# ENV FILES
+.env
+
+# TYPESCRIPT
+*.tsbuildinfo
+
+# MAC
+._*
+.DS_Store
+Thumbs.db

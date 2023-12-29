@@ -1,0 +1,16 @@
+{
+  "name": "pg-boss-studio",
+  "version": "1.0.0",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "start": "turbo run start"
+  },
+  "devDependencies": {
+    "turbo": "^1.11.2",
+    "typescript": "^5.3.3"
+  },
+  "packageManager": "pnpm@8.13.1"
+}

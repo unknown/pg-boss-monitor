@@ -1,0 +1,4 @@
+{
+  "extends": "@pg-boss-studio/tsconfig/base.json",
+  "include": ["src"]
+}

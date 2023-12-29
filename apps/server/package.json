@@ -1,0 +1,27 @@
+{
+  "name": "@pg-boss-studio/server",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules dist",
+    "with-env": "dotenv -e ../../.env --",
+    "dev": "pnpm with-env tsx watch --clear-screen=false src/index.ts",
+    "build": "pnpm with-env tsup",
+    "start": "pnpm with-env node dist/index.js"
+  },
+  "dependencies": {
+    "@fastify/cors": "^8.5.0",
+    "@pg-boss-studio/api": "workspace:^",
+    "@trpc/server": "^10.45.0",
+    "fastify": "^4.25.2",
+    "pg-boss": "^9.0.3"
+  },
+  "devDependencies": {
+    "@pg-boss-studio/tsconfig": "workspace:^",
+    "@types/node": "^20.10.3",
+    "dotenv-cli": "^7.3.0",
+    "tsup": "^8.0.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
