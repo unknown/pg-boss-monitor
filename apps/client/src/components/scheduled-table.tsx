@@ -3,7 +3,6 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -11,12 +10,11 @@ import {
 } from "@/components/ui/table";
 import { trpc } from "@/trpc/react";
 
-export function ScheduleList() {
+export function ScheduledTable() {
   const schedules = trpc.pgBoss.getSchedules.useQuery();
 
   return (
     <Table>
-      <TableCaption>A list of scheduled jobs.</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>Name</TableHead>
@@ -25,7 +23,9 @@ export function ScheduleList() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {schedules.data?.map(({ name, cron, data }) => {
+        {schedules.data?.map((job) => {
+          const { name, cron, data } = job;
+
           return (
             <TableRow key={name}>
               <TableCell>{name}</TableCell>

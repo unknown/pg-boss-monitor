@@ -1,10 +1,9 @@
-import { QueueTable } from "@/components/queue-table";
+import { QueueView } from "@/components/queue-view";
 
 export default function Home() {
   return (
     <main>
-      <h1 className="text-xl">pg-boss-monitor</h1>
-      <QueueTable />
+      <QueueView />
     </main>
   );
 }

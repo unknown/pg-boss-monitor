@@ -31,7 +31,7 @@ export const PgBossRouter = router({
     )
     .query(async ({ ctx, input }) => {
       const { rows } = await ctx.db.query(
-        `select * from ${schema}.job where name = $1 and state = $2::${schema}.job_state;`,
+        `select * from ${schema}.job where name = $1 and state = $2::${schema}.job_state order by completedon desc;`,
         [input.queue, input.state]
       );
 
@@ -39,7 +39,7 @@ export const PgBossRouter = router({
     }),
   getQueues: publicProcedure.query(async ({ ctx }) => {
     const { rows } = await ctx.db.query(
-      `select distinct name from ${schema}.job;`
+      `select distinct name from ${schema}.job order by name asc;`
     );
 
     return rows.map((row) => row.name) as string[];
