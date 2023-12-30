@@ -9,8 +9,8 @@ export function ScheduleList() {
       <h2 className="text-lg">Scheduled</h2>
       <div className="grid"></div>
       <div className="grid">
-        {schedules.data?.map((schedule, i) => (
-          <p key={i}>{schedule.name}</p>
+        {schedules.data?.map((schedule) => (
+          <p key={schedule.name}>{schedule.name}</p>
         ))}
       </div>
     </div>

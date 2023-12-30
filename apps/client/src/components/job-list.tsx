@@ -8,8 +8,8 @@ export function JobList() {
     <div>
       <h2 className="text-lg">Jobs</h2>
       <div className="grid">
-        {jobs.data?.map((job, i) => (
-          <p key={i}>{job.name}</p>
+        {jobs.data?.map((job) => (
+          <p key={job.id}>{job.name}</p>
         ))}
       </div>
     </div>

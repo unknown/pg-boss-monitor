@@ -1,3 +1,4 @@
+import { JobWithMetadata, Schedule } from "pg-boss";
 import { z } from "zod";
 
 import { publicProcedure, router } from "../trpc";
@@ -19,7 +20,7 @@ export const PgBossRouter = router({
   getSchedules: publicProcedure.query(async ({ ctx }) => {
     const { rows } = await ctx.db.query(`select * from ${schema}.schedule;`);
 
-    return rows;
+    return rows as Schedule[];
   }),
   getJobs: publicProcedure
     .input(
@@ -31,6 +32,6 @@ export const PgBossRouter = router({
         [input.state]
       );
 
-      return rows;
+      return rows as JobWithMetadata[];
     }),
 });
