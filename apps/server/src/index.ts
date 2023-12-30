@@ -10,10 +10,14 @@ import { Client } from "pg";
 import { createTRPCContext } from "../../../packages/api/src/trpc";
 
 async function main() {
+  const connectionString = process.env.PG_DATABASE_URL;
+
+  if (!connectionString) {
+    throw new Error("PG_DATABASE_URL is required");
+  }
+
   try {
-    const client = new Client({
-      connectionString: "postgres://user:password@localhost:5432/dev",
-    });
+    const client = new Client({ connectionString });
     await client.connect();
 
     const server = fastify({
