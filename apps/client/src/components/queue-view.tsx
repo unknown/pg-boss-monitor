@@ -20,7 +20,7 @@ export function QueueView() {
         queues={queues}
         onValueChange={setSelectedQueue}
       />
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         {selectedQueue === "scheduled" ? (
           <ScheduledTable />
         ) : (

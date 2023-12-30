@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ColumnDef } from "@tanstack/react-table";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { DataTable } from "@/components/ui/data-table";
+import { VirtualizedDataTable } from "@/components/ui/virtualized-data-table";
 import { trpc } from "@/trpc/react";
 
 const JobStates = [
@@ -34,15 +34,18 @@ const columns: ColumnDef<Job>[] = [
   {
     accessorKey: "id",
     header: "ID",
+    size: 400,
   },
   {
     accessorKey: "data",
     cell: (info) => <pre>{JSON.stringify(info.getValue(), null, 2)}</pre>,
     header: "Data",
+    size: 400,
   },
   {
     accessorKey: "completedon",
     header: "Completed",
+    size: 400,
   },
   {
     accessorFn: (row) => {
@@ -55,6 +58,7 @@ const columns: ColumnDef<Job>[] = [
       return (duration / 1000).toFixed(2);
     },
     header: "Duration (seconds)",
+    size: 200,
   },
 ];
 
@@ -69,6 +73,7 @@ export function JobsTable({ queue }: JobsTableProps) {
   return (
     <div className="flex flex-col h-full">
       <ToggleGroup
+        className="p-2"
         type="single"
         value={selectedState}
         onValueChange={(state: JobState) => setSelectedState(state)}
@@ -79,10 +84,10 @@ export function JobsTable({ queue }: JobsTableProps) {
           </ToggleGroupItem>
         ))}
       </ToggleGroup>
-      {jobs.data && (
-        <div className="flex-1 min-h-0 overflow-scroll">
-          <DataTable columns={columns} data={jobs.data} />
-        </div>
+      {jobs.data === undefined ? (
+        "Loading..."
+      ) : (
+        <VirtualizedDataTable columns={columns} data={jobs.data} />
       )}
     </div>
   );
