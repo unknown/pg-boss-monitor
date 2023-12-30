@@ -31,7 +31,7 @@ export const PgBossRouter = router({
     )
     .query(async ({ ctx, input }) => {
       const { rows } = await ctx.db.query(
-        `select * from ${schema}.job where name = $1 and state = $2::${schema}.job_state;`,
+        `select * from ${schema}.job where name = $1 and state = $2::${schema}.job_state order by completedon desc;`,
         [input.queue, input.state]
       );
 
