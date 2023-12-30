@@ -1,5 +1,5 @@
 {
-  "name": "pg-boss-studio",
+  "name": "pg-boss-monitor",
   "version": "1.0.0",
   "scripts": {
     "preinstall": "npx only-allow pnpm",

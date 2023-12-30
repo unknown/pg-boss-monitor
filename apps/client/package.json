@@ -11,7 +11,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@pg-boss-studio/api": "workspace:^",
+    "@pg-boss-monitor/api": "workspace:^",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-toggle-group": "^1.0.4",
@@ -27,7 +27,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@pg-boss-studio/tsconfig": "workspace:^",
+    "@pg-boss-monitor/tsconfig": "workspace:^",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

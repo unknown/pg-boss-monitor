@@ -1,5 +1,5 @@
 {
-  "extends": "@pg-boss-studio/tsconfig/base.json",
+  "extends": "@pg-boss-monitor/tsconfig/base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "preserve",
