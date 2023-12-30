@@ -3,7 +3,7 @@
 import { trpc } from "@/trpc/react";
 
 export function JobList() {
-  const jobs = trpc.pgBoss.getJobs.useQuery();
+  const jobs = trpc.pgBoss.getJobs.useQuery({ state: "completed" });
   return (
     <div>
       <h2 className="text-lg">Jobs</h2>
