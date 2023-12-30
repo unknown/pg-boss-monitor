@@ -3,8 +3,7 @@ import { z } from "zod";
 
 import { publicProcedure, router } from "../trpc";
 
-// TODO: env variable
-const schema = "pgboss";
+const schema = process.env.PG_BOSS_SCHEMA ?? "pgboss";
 
 const JobStates = [
   "created",
