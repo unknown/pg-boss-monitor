@@ -1,22 +1,20 @@
+import cors from "@fastify/cors";
+import { AppRouter, appRouter } from "@pg-boss-studio/api";
 import {
   FastifyTRPCPluginOptions,
   fastifyTRPCPlugin,
 } from "@trpc/server/adapters/fastify";
 import fastify from "fastify";
-import cors from "@fastify/cors";
+import { Client } from "pg";
 
-import { AppRouter, appRouter } from "@pg-boss-studio/api";
 import { createTRPCContext } from "../../../packages/api/src/trpc";
-import PgBoss from "pg-boss";
 
 async function main() {
   try {
-    const boss = new PgBoss({
+    const client = new Client({
       connectionString: "postgres://user:password@localhost:5432/dev",
-      noSupervisor: true,
-      noScheduling: true,
     });
-    await boss.start();
+    await client.connect();
 
     const server = fastify({
       maxParamLength: 5000,
@@ -37,7 +35,7 @@ async function main() {
       prefix: "/trpc",
       trpcOptions: {
         router: appRouter,
-        createContext: () => createTRPCContext({ boss }),
+        createContext: () => createTRPCContext({ db: client }),
         onError({ error, path }) {
           console.error(`>>> tRPC Error on '${path}'`, error);
         },

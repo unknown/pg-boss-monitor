@@ -1,11 +1,11 @@
 import { initTRPC } from "@trpc/server";
-import PgBoss from "pg-boss";
+import { Client } from "pg";
 
-export const createTRPCContext = async (opts: { boss: PgBoss }) => {
-  const { boss } = opts;
+export const createTRPCContext = async (opts: { db: Client }) => {
+  const { db } = opts;
 
   return {
-    boss,
+    db,
   };
 };
 
