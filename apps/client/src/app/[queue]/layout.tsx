@@ -1,10 +1,8 @@
+import { ReactNode } from "react";
+
 import { QueueTable } from "@/components/queue-table";
 
-export default function QueueLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function QueueLayout({ children }: { children: ReactNode }) {
   return (
     <main className="flex flex-row h-screen">
       <QueueTable />
