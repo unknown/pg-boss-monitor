@@ -1,4 +1,5 @@
 import { JobList } from "@/components/job-list";
+import { QueueList } from "@/components/queue-list";
 import { ScheduleList } from "@/components/schedule-list";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <div className="flex flex-row justify-stretch items-start">
         <ScheduleList />
         <JobList />
+        <QueueList />
       </div>
     </main>
   );
