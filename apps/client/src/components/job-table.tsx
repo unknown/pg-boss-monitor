@@ -44,7 +44,9 @@ export function JobsTable({ queue }: JobsTableProps) {
       >
         {JobStates.map((jobState) => (
           <ToggleGroupItem key={jobState} value={jobState}>
-            {jobState}
+            {jobState === selectedState && jobs.data
+              ? `${jobState} (${jobs.data.length})`
+              : jobState}
           </ToggleGroupItem>
         ))}
       </ToggleGroup>
@@ -53,17 +55,21 @@ export function JobsTable({ queue }: JobsTableProps) {
           <TableRow>
             <TableHead>ID</TableHead>
             <TableHead>Data</TableHead>
-            <TableHead className="text-right">Duration (seconds)</TableHead>
+            <TableHead>Completed</TableHead>
+            <TableHead className="text-right w-[200px]">
+              Duration (seconds)
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {jobs.data?.map((job) => {
             const { id, data, completedon, startedon } = job;
+            const completedonDate = completedon ? new Date(completedon) : null;
+            const startedonDate = startedon ? new Date(startedon) : null;
             const duration =
-              completedon && startedon
+              completedonDate && startedonDate
                 ? (
-                    (new Date(completedon).getTime() -
-                      new Date(startedon).getTime()) /
+                    (completedonDate.getTime() - startedonDate.getTime()) /
                     1000
                   ).toFixed(2)
                 : null;
@@ -73,6 +79,9 @@ export function JobsTable({ queue }: JobsTableProps) {
                 <TableCell>{id}</TableCell>
                 <TableCell>
                   <pre>{JSON.stringify(data, null, 2)}</pre>
+                </TableCell>
+                <TableCell title={completedon ?? undefined}>
+                  {completedonDate ? completedonDate.toLocaleString() : null}
                 </TableCell>
                 <TableCell className="text-right">{duration}</TableCell>
               </TableRow>
