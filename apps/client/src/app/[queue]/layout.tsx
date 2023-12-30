@@ -6,7 +6,7 @@ export default function QueueLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="flex flex-row">
+    <main className="flex flex-row h-screen">
       <QueueTable />
       <div className="flex-1">{children}</div>
     </main>

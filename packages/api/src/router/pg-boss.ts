@@ -39,7 +39,7 @@ export const PgBossRouter = router({
     }),
   getQueues: publicProcedure.query(async ({ ctx }) => {
     const { rows } = await ctx.db.query(
-      `select distinct name from ${schema}.job;`
+      `select distinct name from ${schema}.job order by name asc;`
     );
 
     return rows.map((row) => row.name) as string[];

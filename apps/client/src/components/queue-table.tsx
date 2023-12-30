@@ -17,8 +17,8 @@ export function QueueTable() {
   }
 
   return (
-    <div>
-      <nav className="grid">
+    <div className="p-2">
+      <nav className="grid gap-1">
         {["scheduled", ...queues.data].map((queue) => (
           <Link
             key={queue}

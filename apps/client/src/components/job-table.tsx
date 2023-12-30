@@ -37,7 +37,7 @@ export function JobsTable({ queue }: JobsTableProps) {
   });
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-scroll h-full">
       <ToggleGroup
         type="single"
         value={selectedState}
@@ -49,19 +49,17 @@ export function JobsTable({ queue }: JobsTableProps) {
           </ToggleGroupItem>
         ))}
       </ToggleGroup>
-
       <Table>
         <TableCaption>A list of jobs.</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>ID</TableHead>
-            <TableHead>Name</TableHead>
             <TableHead>Data</TableHead>
             <TableHead className="text-right">Duration (seconds)</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {jobs.data?.map(({ id, name, data, completedon, startedon }) => {
+          {jobs.data?.map(({ id, data, completedon, startedon }) => {
             const duration =
               completedon && startedon
                 ? (
@@ -74,7 +72,6 @@ export function JobsTable({ queue }: JobsTableProps) {
             return (
               <TableRow key={id}>
                 <TableCell>{id}</TableCell>
-                <TableCell>{name}</TableCell>
                 <TableCell>
                   <pre>{JSON.stringify(data, null, 2)}</pre>
                 </TableCell>
