@@ -36,7 +36,7 @@ export function JobsTable({ queue }: JobsTableProps) {
   });
 
   return (
-    <div className="flex flex-col h-full">
+    <>
       <ToggleGroup
         type="single"
         value={selectedState}
@@ -89,6 +89,6 @@ export function JobsTable({ queue }: JobsTableProps) {
           })}
         </TableBody>
       </Table>
-    </div>
+    </>
   );
 }
