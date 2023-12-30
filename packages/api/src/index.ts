@@ -1,7 +1,8 @@
-import { publicProcedure, router } from "./trpc";
+import { PgBossRouter } from "./router/pg-boss";
+import { router } from "./trpc";
 
 export const appRouter = router({
-  helloWorld: publicProcedure.query(() => "Hello world!"),
+  pgBoss: PgBossRouter,
 });
 
 // Export type router type signature,
