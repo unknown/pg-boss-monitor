@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { JobsTable } from "@/components/job-table";
 import { QueueList } from "@/components/queue-list";
-import { ScheduledTable } from "@/components/scheduled-list";
+import { ScheduledTable } from "@/components/scheduled-table";
 import { trpc } from "@/trpc/react";
 
 export function QueueView() {
