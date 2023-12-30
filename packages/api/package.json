@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "@trpc/client": "^10.45.0",
-    "@trpc/server": "^10.45.0"
+    "@trpc/server": "^10.45.0",
+    "pg-boss": "^9.0.3"
   },
   "devDependencies": {
     "@pg-boss-studio/tsconfig": "workspace:^",

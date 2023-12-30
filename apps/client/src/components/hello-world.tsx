@@ -3,6 +3,8 @@
 import { trpc } from "@/trpc/react";
 
 export function HelloWorld() {
-  const helloWorldQuery = trpc.helloWorld.useQuery();
-  return <span>{helloWorldQuery.data}</span>;
+  const schedules = trpc.pgBoss.getSchedules.useQuery();
+  return (
+    <span>{schedules.data?.map((schedule) => schedule.name).join(" ")}</span>
+  );
 }

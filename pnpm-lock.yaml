@@ -118,6 +118,9 @@ importers:
       '@trpc/server':
         specifier: ^10.45.0
         version: 10.45.0
+      pg-boss:
+        specifier: ^9.0.3
+        version: 9.0.3
     devDependencies:
       '@pg-boss-studio/tsconfig':
         specifier: workspace:^
