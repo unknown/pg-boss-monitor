@@ -3,7 +3,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
-import { AppRouter } from "@pg-boss-studio/api";
+import { AppRouter } from "@pg-boss-monitor/api";
 import { ReactNode, useState } from "react";
 
 export const trpc = createTRPCReact<AppRouter>();

@@ -5,5 +5,5 @@ export default defineConfig({
   format: "cjs",
   tsconfig: "tsconfig.json",
   skipNodeModulesBundle: true,
-  noExternal: [/@pg-boss-studio\/.+/],
+  noExternal: [/@pg-boss-monitor\/.+/],
 });

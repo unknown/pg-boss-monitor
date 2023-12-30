@@ -1,5 +1,5 @@
 import cors from "@fastify/cors";
-import { AppRouter, appRouter } from "@pg-boss-studio/api";
+import { AppRouter, appRouter } from "@pg-boss-monitor/api";
 import {
   FastifyTRPCPluginOptions,
   fastifyTRPCPlugin,
