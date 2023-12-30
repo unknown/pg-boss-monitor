@@ -24,12 +24,16 @@ export const PgBossRouter = router({
   }),
   getJobs: publicProcedure
     .input(
-      z.object({ state: z.enum(JOB_STATES), limit: z.number().optional() })
+      z.object({
+        queue: z.string(),
+        state: z.enum(JOB_STATES),
+        limit: z.number().optional(),
+      })
     )
     .query(async ({ ctx, input }) => {
       const { rows } = await ctx.db.query(
-        `select * from ${schema}.job where state = $1::${schema}.job_state;`,
-        [input.state]
+        `select * from ${schema}.job where name = $1 and state = $2::${schema}.job_state;`,
+        [input.queue, input.state]
       );
 
       return rows as JobWithMetadata[];
