@@ -6,7 +6,7 @@ import { publicProcedure, router } from "../trpc";
 // TODO: env variable
 const schema = "pgboss";
 
-const JOB_STATES = [
+const JobStates = [
   "created",
   "retry",
   "active",
@@ -26,7 +26,7 @@ export const PgBossRouter = router({
     .input(
       z.object({
         queue: z.string(),
-        state: z.enum(JOB_STATES),
+        state: z.enum(JobStates),
         limit: z.number().optional(),
       })
     )

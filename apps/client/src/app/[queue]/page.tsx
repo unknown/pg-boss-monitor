@@ -13,11 +13,7 @@ export default function QueuePage({ params }: QueuePageProps) {
   return (
     <main>
       <div className="flex flex-row justify-stretch items-start">
-        {queue === "scheduled" ? (
-          <ScheduleList />
-        ) : (
-          <JobsTable queue={queue} state="completed" />
-        )}
+        {queue === "scheduled" ? <ScheduleList /> : <JobsTable queue={queue} />}
       </div>
     </main>
   );
