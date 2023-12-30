@@ -3,7 +3,6 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -37,7 +36,7 @@ export function JobsTable({ queue }: JobsTableProps) {
   });
 
   return (
-    <div className="w-full overflow-scroll h-full">
+    <div className="flex flex-col h-full">
       <ToggleGroup
         type="single"
         value={selectedState}
@@ -50,8 +49,7 @@ export function JobsTable({ queue }: JobsTableProps) {
         ))}
       </ToggleGroup>
       <Table>
-        <TableCaption>A list of jobs.</TableCaption>
-        <TableHeader>
+        <TableHeader className="sticky top-0 bg-background">
           <TableRow>
             <TableHead>ID</TableHead>
             <TableHead>Data</TableHead>
@@ -59,7 +57,8 @@ export function JobsTable({ queue }: JobsTableProps) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {jobs.data?.map(({ id, data, completedon, startedon }) => {
+          {jobs.data?.map((job) => {
+            const { id, data, completedon, startedon } = job;
             const duration =
               completedon && startedon
                 ? (
@@ -70,7 +69,7 @@ export function JobsTable({ queue }: JobsTableProps) {
                 : null;
 
             return (
-              <TableRow key={id}>
+              <TableRow key={id} className="max-h-40">
                 <TableCell>{id}</TableCell>
                 <TableCell>
                   <pre>{JSON.stringify(data, null, 2)}</pre>

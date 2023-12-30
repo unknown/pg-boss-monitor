@@ -10,9 +10,5 @@ interface QueuePageProps {
 export default function QueuePage({ params }: QueuePageProps) {
   const { queue } = params;
 
-  return (
-    <div className="flex flex-row justify-stretch items-start h-full">
-      {queue === "scheduled" ? <ScheduleList /> : <JobsTable queue={queue} />}
-    </div>
-  );
+  return queue === "scheduled" ? <ScheduleList /> : <JobsTable queue={queue} />;
 }
