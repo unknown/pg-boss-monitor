@@ -37,7 +37,7 @@ export function JobsTable({ queue }: JobsTableProps) {
   });
 
   return (
-    <div>
+    <div className="w-full">
       <ToggleGroup
         type="single"
         value={selectedState}

@@ -6,9 +6,9 @@ export default function QueueLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-row">
+    <main className="flex flex-row">
       <QueueTable />
       <div className="flex-1">{children}</div>
-    </div>
+    </main>
   );
 }
