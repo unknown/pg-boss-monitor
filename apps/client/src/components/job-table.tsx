@@ -43,7 +43,12 @@ const columns: ColumnDef<Job>[] = [
     size: 400,
   },
   {
-    accessorKey: "completedon",
+    accessorFn: (row) => {
+      if (!row.completedon) {
+        return null;
+      }
+      return new Date(row.completedon).toLocaleString();
+    },
     header: "Completed",
     size: 400,
   },
