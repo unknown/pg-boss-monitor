@@ -92,7 +92,7 @@ export function JobsTable({ queue }: JobsTableProps) {
   });
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full border-l divide-y">
       <div className="flex items-center p-2 gap-2">
         <ToggleGroup
           type="single"
