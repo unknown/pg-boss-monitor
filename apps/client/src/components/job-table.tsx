@@ -111,7 +111,7 @@ export function JobsTable({ queue }: JobsTableProps) {
           ))}
         </ToggleGroup>
       </div>
-      <div className="flex items-center p-2 gap-2">
+      <div className="flex items-center p-2 gap-4">
         <Button
           variant="outline"
           onClick={() => setOffset((offset) => Math.max(0, offset - limit))}
@@ -119,8 +119,9 @@ export function JobsTable({ queue }: JobsTableProps) {
         >
           {"<"}
         </Button>
-        <p className="tabular-nums">{limit}</p>
-        <p className="tabular-nums">{offset}</p>
+        <p className="text-sm">{jobs.data?.length ?? 0} rows</p>
+        <p className="text-sm">{limit}</p>
+        <p className="text-sm">{offset}</p>
         <Button
           variant="outline"
           onClick={() =>
@@ -133,8 +134,8 @@ export function JobsTable({ queue }: JobsTableProps) {
           {">"}
         </Button>
       </div>
-      {jobs.data === undefined ? null : (
-        <DataTable columns={columns} data={jobs.data} />
+      {jobs.isLoading ? null : (
+        <DataTable columns={columns} data={jobs.data ?? []} />
       )}
     </div>
   );
